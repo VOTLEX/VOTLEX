@@ -136,8 +136,6 @@ for i in range(50):
         sys.stdout.write(f"\r {random_color} " + anim[i % len(anim)] +"\x1b[0m ")
         sys.stdout.write(f"\r {random_color}" + am[i % len(am)] +"\x1b[0m ")
         sys.stdout.flush()
-        
-os.system('clear')
 
 
 
@@ -384,23 +382,31 @@ ___________________________________
   
 
 
-
+HEADERS = {"x-bloks-version-id":"8ca96ca267e30c02cf90888d91eeff09627f0e3fd2bd9df472278c9a6c022cbb","user-agent":"Instagram 275.0.0.27.98 Android (28/9; 240dpi; 720x1280; Asus; ASUS_I003DD; ASUS_I003DD; intel; en_US; 458229258)","authorization":"Bearer IGT:2:eyJkc191c2VyX2lkIjoiNTI1MjEwODYyODIiLCJzZXNzaW9uaWQiOiI1MjUyMTA4NjI4MiUzQUt4VGg2UUFzam5teVlIJTNBMjUlM0FBWWQtcXhaZGRTanNyQ3o2eW1ud0NuUGNINFpwbVd1a0JMN2p4Wm5Gb2cifQ=="}
 
         
-
-    
-def dosya():
-    liste = input(f'[+]{B}LİSTE ADINI GİR: ')
-    try:
-        with open(liste, "r") as f:
-            for line in f:
-                if '@' in line:
-                    email = line.strip().split('@')[0]
-                else:
-                    email = line.strip()
+def tkip():
+    while True:
+        try:
+            user_id = str(random.randrange(15000000, 240205236))[:].zfill(8)  
+            data = {
+                "lsd": user_id,
+                "variables": '{"id":"' + user_id + '","render_surface":"PROFILE"}',
+                "server_timestamps": 'true',
+                "doc_id": '25313068075003303'
+            }
+            HEADERS['X-Fb-Lsd'] = user_id
+            response = requests.post("https://www.instagram.com/api/graphql", headers=HEADERS, data=data).json()
+            if 'data' in response and 'user' in response['data'] and 'username' in response['data']['user']:
+                username = response['data']['user']['username']
+                email = username
                 votlex_gmail(email)
-                
-    except FileNotFoundError:
-        print(f"{F}{liste} ADILI LİSTE VEYA DOSYA YOK TEKRAR DENE  {a1}.")
-        dosya()
-dosya()
+        except Exception:
+            continue
+
+                     
+def hiz(vtl):
+    for _ in range(vtl):
+        Thread(target=tkip).start()
+if __name__ == "__main__":
+    hiz(15)
