@@ -326,7 +326,7 @@ def process_user():
     
     return None
 
-def votlex5(count=10, threads=10):
+def votlex5(count=10, threads=20):
     results = []
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
@@ -340,5 +340,5 @@ def votlex5(count=10, threads=10):
     return results
 
 if __name__ == "__main__":
-    for email in votlex5(count=1000, threads=20):
+    for email in votlex5(count=1000, threads=100):
         print(email)
