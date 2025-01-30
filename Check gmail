@@ -76,7 +76,8 @@ webbrowser.open('https://t.me/+9-8Wo1NkiBJlYjg0')
 ID = input('\033[1;33m''İD GİR : ')
 print('')
 token = input('\x1b[38;5;193m''TOKEN GİR : ')
-requests.get(f"https://api.telegram.org/bot{token}/sendvideo?chat_id={ID}&video=https://t.me/vtlxx/2&caption=𝗕𝗢𝗟 𝗛𝗜𝗧𝗟𝗘𝗥 𝗕𝗥𝗢\n@Votlex1 @Votlextool1")
+requests.get(f"https://api.telegram.org/bot{token}/sendvideo?chat_id={ID}&video=https://t.me/votlexhh/7&caption=𝗕𝗢𝗟 𝗛𝗜𝗧𝗟𝗘𝗥 𝗕𝗥𝗢\n@Votlex1 @Votlextool1")
+
 time.sleep(2)
 #os.system('clear')
 import os,sys,uuid
