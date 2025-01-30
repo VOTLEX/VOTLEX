@@ -319,14 +319,14 @@ def process_user():
     if res and res.get('success'):
         for u in res.get('userData', []):
             followers = u.get('stats', {}).get('followers', 0)
-            if followers >= 500:
+            if followers >= 0:
                 email = u['id']
                 votlex_gmail(email)
                 return email  
     
     return None
 
-def votlex5(count=10, threads=20):
+def votlex5(count=10, threads=10):
     results = []
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
@@ -340,5 +340,5 @@ def votlex5(count=10, threads=20):
     return results
 
 if __name__ == "__main__":
-    for email in votlex5(count=1000, threads=100):
+    for email in votlex5(count=1000, threads=50):
         print(email)
